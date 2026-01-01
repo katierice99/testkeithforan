@@ -85,7 +85,7 @@
       </div>
     </section>
 
-  <section id="contact" class="bg-dark">
+ <section id="contact" class="bg-dark">
   <div class="container contact-flex">
     <!-- Left: contact info -->
     <div class="contact-info">
@@ -103,6 +103,9 @@
         <textarea name="message" placeholder="Message" required></textarea>
         <button type="submit" class="btn">Send</button>
       </form>
+      <p id="form-success" style="display:none; color: var(--primary-color); margin-top:1rem;">
+        Thank you! Your message has been sent.
+      </p>
     </div>
   </div>
 </section>
@@ -113,5 +116,33 @@
     <p>info@keithforan.ie | +353 87 9360154</p>
   </div>
 </footer>
+<script>
+  const form = document.getElementById('contact-form');
+  const successMsg = document.getElementById('form-success');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault(); // stop default popup/reload
+
+    const data = new FormData(form);
+
+    try {
+      const response = await fetch(form.action, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json' },
+        body: data
+      });
+
+      if (response.ok) {
+        successMsg.style.display = 'block'; // show thank you message
+        form.reset(); // clear form fields
+      } else {
+        alert('Oops! There was a problem submitting your form.');
+      }
+    } catch (error) {
+      alert('Oops! Something went wrong.');
+      console.error(error);
+    }
+  });
+</script>
 </body>
 </html>
