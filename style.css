@@ -530,21 +530,7 @@ h2::after { content: ''; position: absolute; bottom: 0; left: 0; width: 50px; he
   box-shadow: 0 5px 15px rgba(200,16,46,0.2);
 }
 
-/* RESPONSIVE CONTACT SECTION */
-@media (max-width: 768px) {
-  .contact-flex {
-    flex-direction: column;
-    gap: 2rem;
-  }
 
-  #contact-form button {
-    width: 100%;
-  }
-
-  .contact-info p {
-    font-size: 1rem;
-  }
-}
 
 /* =========================
    FOOTER TEXT
@@ -555,3 +541,4 @@ footer .footer-text {
   padding: 2rem 0;
   font-size: 1rem;
 }
+
